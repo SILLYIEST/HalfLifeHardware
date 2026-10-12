@@ -1,6 +1,6 @@
 # Heartbie
 
-![Heartbie Front Render](Renders/Heartbie%20Render.png)
+![Heartbie Front Render](Week 1 - Starbie/Renders/Heartbie Render.png)
 
 Mini pet that you can interact with! 
 (Based off of the starter project Starbie)
