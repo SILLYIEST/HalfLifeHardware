@@ -12,15 +12,14 @@
 
 | Part | What it's for | Qty | Unit | Total | Vendor |
 | --- | --- | --- | --- | --- | --- |
-| [LED Cycling Lights](https://www.mouser.com/en/ProductDetail/SparkFun/COM-11448?qs=WyAARYrbSna69AA1Rts1Ag%3D%3D&mgh=1) | Add some flash to the sides of the PCB | 6 | $0.60 | $3.60 | [Mouser](https://www.mouser.com/en/ProductDetail/SparkFun/COM-11448?qs=WyAARYrbSna69AA1Rts1Ag%3D%3D&mgh=1) |
 | [PCB](https://www.jlcpcb.com/) | Keeping the components together/connected | 1 | $6.90 | $6.90 | [JLCPCB](https://www.jlcpcb.com/) |
 | [Cherry MX Keycap](https://maxkeyboard.com/row-3-size-1x1-cherry-mx-keycap-r3-1x1.html) | Pressing Cherry Switches | 2 | $0.50 | $1.00 | [Max Keyboard](https://maxkeyboard.com/row-3-size-1x1-cherry-mx-keycap-r3-1x1.html) |
 | [DHT11](https://www.waveshare.com/temperature-humidity-sensor.htm) | Sensing temperature | 1 | $3.99 | $3.99 | [Waveshare](https://www.waveshare.com/temperature-humidity-sensor.htm) |
 | [MPU-6050](https://protosupplies.com/product/mpu-6050-gy-521-3-axis-accel-gryo-sensor-module/) | Measuring position | 1 | $3.95 | $3.95 | [Proto Supplies](https://protosupplies.com/product/mpu-6050-gy-521-3-axis-accel-gryo-sensor-module/) |
 | [OLED 0.92" Display](https://www.amazon.com/dp/B0GBWXTR1Z?th=1) | Displaying Heartbie | 1 | $5.99 | $5.99 | [Amazon](https://www.amazon.com/dp/B0GBWXTR1Z?th=1) |
 | [XIAO ESP32 C3](https://www.seeedstudio.com/Seeed-XIAO-ESP32C3-p-5431.html) | Sending signals throughout the circut | 1 | $5.99 | $5.99 | [Seeed Studio](https://www.seeedstudio.com/Seeed-XIAO-ESP32C3-p-5431.html) |
-| **Parts subtotal** | — | — | — | **$31.42** | — |
+| **Parts subtotal** | — | — | — | **$27.82** | — |
 | **Tax & shipping** | — | — | — | **$0.00** | — |
-| **Total** | — | — | — | **$31.42** | — |
+| **Total** | — | — | — | **$27.82** | — |
 
-**$1.42 over the tier's funding.** Every tier gives a fixed amount for parts, so this needs cutting back or a higher tier.
+$2.18 left of the tier's funding.
