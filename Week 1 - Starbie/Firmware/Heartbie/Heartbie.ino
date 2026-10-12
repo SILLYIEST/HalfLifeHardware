@@ -11,7 +11,7 @@
     - DHT sensor library
   Arduino IDE will offer to install their dependencies too. Click Install All.
 */
-
+// new goal! try and make a boom!
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
@@ -55,7 +55,7 @@ const bool RESET_SAVED_PET_ON_BOOT = false;
 enum PetReaction {
   NAP_REACTION,
   JUMP_REACTION,
-  HEART_REACTION,
+  PARTY_REACTION,
   RUN_REACTION,
 };
 
@@ -69,9 +69,9 @@ struct MenuItem {
 
 const MenuItem MENU_ITEMS[] = {
   {"NAP",   1,  18, -4, NAP_REACTION},   // top: sleep and emit Zs
-  {"PLAY", 12, -9, -5, RUN_REACTION},    // right: two fast laps + hearts
+  {"PLAY", 12, -9, -5, RUN_REACTION},    // right: two fast laps + PARTYs
   {"FEED",  3,  2,  18, JUMP_REACTION},  // bottom: wiggle and jump
-  {"PET",   7,  0,  0, HEART_REACTION},  // left: jump and emit hearts
+  {"PARTY",   7,  0,  0, PARTY_REACTION},  // left: jump and emit PARTYs
 };
 const int MENU_ITEM_COUNT = sizeof(MENU_ITEMS) / sizeof(MENU_ITEMS[0]);
 
@@ -109,7 +109,7 @@ const uint16_t PET_PRE_JUMP_MS = 230;
 const uint16_t PET_JUMP_MS = 430;
 const int PET_JUMP_HEIGHT = 16;
 const uint32_t NAP_DURATION_MS = 48000;  // 48 seconds: four times the old nap.
-const uint16_t HEARTS_DURATION_MS = 1600;
+const uint16_t PARTYS_DURATION_MS = 1600;
 const uint16_t PLAY_LAP_MS = 800;
 const uint8_t PLAY_LAP_COUNT = 2;
 
@@ -117,38 +117,14 @@ const uint8_t PLAY_LAP_COUNT = 2;
 // supplied creature readable on a tiny, one-bit OLED: head, eye, legs, tail,
 // and a small flower-like ear accent all stay separate instead of becoming a blob.
 const uint8_t PROGMEM PET_SPRITE[] = {
-  0x00, 0x00, 0x00, 0x00,
-  0x00, 0x00, 0x00, 0x00,
-  0x00, 0x00, 0x00, 0x00,
-  0x00, 0x00, 0x00, 0x00,
-  0x00, 0x00, 0x00, 0x00,
-  0x00, 0x00, 0x00, 0x00,
-  0x00, 0x70, 0x0a, 0x00,
-  0x00, 0xf8, 0x1f, 0x00,
-  0x00, 0x8c, 0x3f, 0x80,
-  0x00, 0x43, 0xff, 0x00,
-  0x00, 0x43, 0xff, 0x00,
-  0x00, 0x30, 0x7e, 0x00,
-  0x00, 0x98, 0x01, 0x00,
-  0x01, 0x98, 0x01, 0x80,
-  0x03, 0x00, 0x10, 0xc0,
-  0x03, 0x04, 0x00, 0xc0,
-  0x01, 0x8b, 0x01, 0x80,
-  0x01, 0xcb, 0x03, 0x80,
-  0x03, 0xc0, 0x03, 0xc0,
-  0x03, 0xc0, 0x03, 0xc0,
-  0x01, 0xc0, 0x03, 0x80,
-  0x01, 0x80, 0x01, 0x80,
-  0x00, 0x60, 0x06, 0x00,
-  0x00, 0x3f, 0xfc, 0x00,
-  0x00, 0x7f, 0xfe, 0x00,
-  0x00, 0x70, 0x0e, 0x00,
-  0x00, 0x00, 0x00, 0x00,
-  0x00, 0x00, 0x00, 0x00,
-  0x00, 0x00, 0x00, 0x00,
-  0x00, 0x00, 0x00, 0x00,
-  0x00, 0x00, 0x00, 0x00,
-  0x00, 0x00, 0x00, 0x00,
+0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x40, 0x00, 0x00, 0x1f, 0xc0, 0x00, 0x00, 0x1f, 0xc0, 0x00, 
+	0x00, 0x1f, 0xf8, 0x00, 0x00, 0xff, 0xf8, 0x00, 0x00, 0xff, 0xf0, 0x00, 0x00, 0x3f, 0xf0, 0x00, 
+	0x00, 0x33, 0x70, 0x00, 0x00, 0x2a, 0xb0, 0x00, 0x00, 0x22, 0x30, 0x00, 0x00, 0x30, 0x30, 0x00, 
+	0x00, 0x2f, 0xd0, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x1f, 0xa0, 0x00, 0x00, 0x3c, 0xf0, 0x00, 
+	0x00, 0x3c, 0xf0, 0x00, 0x00, 0x3c, 0xf0, 0x00, 0x00, 0x2c, 0xd0, 0x00, 0x00, 0x2c, 0xd0, 0x00, 
+	0x00, 0x2c, 0xd0, 0x00, 0x00, 0x2f, 0xd0, 0x00, 0x00, 0x5b, 0x68, 0x00, 0x00, 0x33, 0x30, 0x00, 
+	0x00, 0x13, 0x20, 0x00, 0x00, 0x13, 0x20, 0x00, 0x00, 0x13, 0x20, 0x00, 0x00, 0x13, 0x20, 0x00, 
+	0x00, 0x13, 0x20, 0x00, 0x00, 0x13, 0x20, 0x00, 0x00, 0x3f, 0xf0, 0x00, 0x00, 0x7f, 0xf8, 0x00
 };
 // ===========================================================================
 // You can read below without needing to understand every line. The rest of
@@ -215,7 +191,7 @@ uint32_t lastShakeAt = 0;
 uint32_t shakeAnimationEndsAt = 0;
 uint32_t petJumpStartedAt = 0;
 uint32_t nappingUntil = 0;
-uint32_t heartAnimationEndsAt = 0;
+uint32_t PartyAnimationEndsAt = 0;
 uint32_t playRunStartedAt = 0;
 int nappingPetX = 0;
 
@@ -410,7 +386,7 @@ void chooseMenuItem() {
   savePet();
   const uint32_t now = millis();
   nappingUntil = 0;
-  heartAnimationEndsAt = 0;
+  PartyAnimationEndsAt = 0;
   playRunStartedAt = 0;
 
   if (item.reaction == NAP_REACTION) {
@@ -420,12 +396,12 @@ void chooseMenuItem() {
   } else if (item.reaction == RUN_REACTION) {
     petJumpStartedAt = 0;
     playRunStartedAt = now;
-    heartAnimationEndsAt = now + playRunDuration();
+    PartyAnimationEndsAt = now + playRunDuration();
   } else {
     // A confirmed action gets a little anticipation shake before the jump.
     petJumpStartedAt = now;
-    if (item.reaction == HEART_REACTION) {
-      heartAnimationEndsAt = now + HEARTS_DURATION_MS;
+    if (item.reaction == PARTY_REACTION) {
+      PartyAnimationEndsAt = now + PARTYS_DURATION_MS;
     }
   }
   currentView = PET_VIEW;
@@ -446,26 +422,45 @@ void handleButtons() {
   }
 }
 
-void drawHeart(int x, int y) {
-  // A tiny seven-pixel-wide heart that stays crisp on the OLED.
-  display.fillRect(x - 2, y, 2, 2, SSD1306_WHITE);
-  display.fillRect(x + 1, y, 2, 2, SSD1306_WHITE);
-  display.fillRect(x - 3, y + 2, 7, 2, SSD1306_WHITE);
-  display.fillRect(x - 2, y + 4, 5, 1, SSD1306_WHITE);
-  display.fillRect(x - 1, y + 5, 3, 1, SSD1306_WHITE);
-  display.drawPixel(x, y + 6, SSD1306_WHITE);
+void drawParty(int x, int y) {
+  // A tiny seven-pixel-wide Party that stays crisp on the OLED.
+  
+  display.fillRect(x - 4, y+20, 2, 2,SSD1306_WHITE); display.fillRect(x + 7, y +23, 3, 3,SSD1306_WHITE);
+  display.fillRect(x - 6, y + 25, 3, 2,SSD1306_WHITE); 
+  display.fillRect(x - 6, y + 27, 2, 2,SSD1306_WHITE);
+  display.fillRect(x - 1, y + 27, 3, 2,SSD1306_WHITE); display.fillRect(x, y + 28, 2, 3,SSD1306_WHITE);
+      
+  display.fillRect(x - 20, y+20, 2, 2,SSD1306_WHITE); display.fillRect(x - 21, y +23, 3, 3,SSD1306_WHITE);
+  display.fillRect(x - 26, y + 25, 3, 2,SSD1306_WHITE); display.fillRect(x - 24, y + 27, 2, 2,SSD1306_WHITE);
+  display.fillRect(x - 21, y + 27, 3, 2,SSD1306_WHITE); display.fillRect(x - 32, y + 28, 2, 3,SSD1306_WHITE);
+
+  display.fillRect(x - 44, y+20, 2, 2,SSD1306_WHITE); display.fillRect(x -34, y +23, 3, 3,SSD1306_WHITE);
+  display.fillRect(x - 36, y + 25, 3, 2,SSD1306_WHITE); display.fillRect(x - 36, y + 27, 2, 2,SSD1306_WHITE);
+  display.fillRect(x - 43, y + 27, 3, 2,SSD1306_WHITE); display.fillRect(x - 41, y + 28, 2, 3,SSD1306_WHITE);
 }
 
-void drawHearts(uint32_t now, int petX, int petY) {
-  if (now >= heartAnimationEndsAt) {
+void drawSparkle(int x, int y) {
+  display.drawPixel(x, y - 2, SSD1306_WHITE);
+  display.drawPixel(x - 1, y - 1, SSD1306_WHITE);
+  display.drawPixel(x + 1, y - 1, SSD1306_WHITE);
+  display.drawPixel(x - 2, y, SSD1306_WHITE);
+  display.drawPixel(x, y, SSD1306_WHITE);
+  display.drawPixel(x + 2, y, SSD1306_WHITE);
+  display.drawPixel(x - 1, y + 1, SSD1306_WHITE);
+  display.drawPixel(x + 1, y + 1, SSD1306_WHITE);
+  display.drawPixel(x, y + 2, SSD1306_WHITE);
+}
+
+void drawPartys(uint32_t now, int petX, int petY) {
+  if (now >= PartyAnimationEndsAt) {
     return;
   }
 
   const float progress =
-      1.0f - static_cast<float>(heartAnimationEndsAt - now) / HEARTS_DURATION_MS;
-  const int rise = static_cast<int>(progress * 18.0f);
-  drawHeart(petX + 10, petY - 3 - rise);
-  drawHeart(petX + 22, petY - 9 - rise / 2);
+      1.0f - static_cast<float>(PartyAnimationEndsAt - now) / PARTYS_DURATION_MS;
+  const int rise = static_cast<int>(progress * 48.0f);
+  drawParty(50, petY - 33 + rise);
+  drawParty(110, petY - 33 + rise);
 }
 
 void drawSleepZs(uint32_t now, int petX, int petY) {
@@ -512,10 +507,14 @@ void drawPet() {
   display.drawBitmap(petX, petY, PET_SPRITE, PET_SPRITE_WIDTH, PET_SPRITE_HEIGHT,
                      SSD1306_WHITE);
 
+  if (!isNapping() && (now / 250) % 2 == 0) {
+  drawSparkle(petX - 4, petY + 18);
+}
+
   if (isNapping()) {
     drawSleepZs(now, petX, petY);
   }
-  drawHearts(now, petX, petY);
+  drawPartys(now, petX, petY);
 }
 
 void drawMenuItem(int item) {
