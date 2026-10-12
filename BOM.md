@@ -15,11 +15,10 @@
 | [ESP32 C3](https://esp32s.com/product/esp32-c3-development-board-wi-fi-bluetooth-mini-module-16-pin-single-core-type-c/) | Wi-fi and operation | 1 | $4.90 | $4.90 | [ESP32s](https://esp32s.com/product/esp32-c3-development-board-wi-fi-bluetooth-mini-module-16-pin-single-core-type-c/) |
 | [Gateron Sea Salt Smoothie 48g Linear PCB Mount Switch](https://mechanicalkeyboards.com/products/gateron-sea-salt-smoothie?_pos=26&_sid=622595819&_ss=r) | Clicking the buttons on the unit that change the screen | 2 | $0.30 | $0.60 | [Mechanical Keyboards](https://mechanicalkeyboards.com/products/gateron-sea-salt-smoothie?_pos=26&_sid=622595819&_ss=r) |
 | [Pin header](https://www.mikroe.com/1x8-stacking-header) | Connection | 1 | $1.02 | $1.02 | [Mikroe](https://www.mikroe.com/1x8-stacking-header) |
-| [128x64 OLED Display](https://www.addicore.com/products/oled-display-128x64-0-96in-monochrome?variant=45759520309565) | Displaying Starbie | 1 | $6.50 | $6.50 | [Addicore](https://www.addicore.com/products/oled-display-128x64-0-96in-monochrome?variant=45759520309565) |
 | [LED Cycling Lights](https://www.mouser.com/en/ProductDetail/SparkFun/COM-11448?qs=WyAARYrbSna69AA1Rts1Ag%3D%3D&mgh=1) | Add some flash to the sides of the PCB | 6 | $0.60 | $3.60 | [Mouser](https://www.mouser.com/en/ProductDetail/SparkFun/COM-11448?qs=WyAARYrbSna69AA1Rts1Ag%3D%3D&mgh=1) |
 | [DHT Temperature Humidity Sensor](https://www.waveshare.com/temperature-humidity-sensor.htm) | Sensing temperature | 1 | $3.99 | $3.99 | [Waveshare](https://www.waveshare.com/temperature-humidity-sensor.htm) |
-| **Parts subtotal** | — | — | — | **$20.61** | — |
+| **Parts subtotal** | — | — | — | **$14.11** | — |
 | **Tax & shipping** | — | — | — | **$0.00** | — |
-| **Total** | — | — | — | **$20.61** | — |
+| **Total** | — | — | — | **$14.11** | — |
 
-$9.39 left of the tier's funding.
+$15.89 left of the tier's funding.
