@@ -18,7 +18,7 @@
 | [OLED 0.92" Display](https://www.amazon.com/dp/B0GBWXTR1Z?th=1) | Displaying Heartbie | 1 | $5.99 | $5.99 | [Amazon](https://www.amazon.com/dp/B0GBWXTR1Z?th=1) |
 | [XIAO ESP32 C3](https://www.seeedstudio.com/Seeed-XIAO-ESP32C3-p-5431.html) | Sending signals throughout the circut | 1 | $5.99 | $5.99 | [Seeed Studio](https://www.seeedstudio.com/Seeed-XIAO-ESP32C3-p-5431.html) |
 | **Parts subtotal** | — | — | — | **$23.83** | — |
-| **Tax & shipping** | — | — | — | **$2.18** | — |
-| **Total** | — | — | — | **$26.01** | — |
+| **Tax & shipping** | — | — | — | **$7.95** | — |
+| **Total** | — | — | — | **$31.78** | — |
 
-$3.99 left of the tier's funding.
+**$1.78 over the tier's funding.** Every tier gives a fixed amount for parts, so this needs cutting back or a higher tier.
